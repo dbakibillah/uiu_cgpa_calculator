@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind and daisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/69c1ad270c.js" crossorigin="anonymous"></script>
+
+    <title>UIU CGPA Calculator</title>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Primary color: #f68b1f -->
+    <header class="container mx-auto md:px-24 p-2 bg-[#fffae5]">
+        <nav class="flex items-center gap-2">
+            <!-- Dropdown menu -->
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle text-[#f68b1f]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-3 p-2 shadow">
+                    <li><a>Home</a></li>
+                    <li><a>History</a></li>
+                    <li><a>About</a></li>
+                </ul>
+            </div>
+
+            <h1 class="text-xl font-bold text-[#f68b1f]">Calculate Your CGPA</h1>
+        </nav>
+    </header>
+
+    <main class="flex-grow mt-6 mb-10">
+        <section class="container md:px-24 p-2 mx-auto rounded-lg shadow-lg bg-white">
+            <div class="flex gap-4 mb-5">
+                <input id="input-credits" type="number" placeholder="Completed Credits"
+                    class="input input-bordered w-full max-w-xs">
+                <input id="input-cgpa" type="number" placeholder="Current CGPA"
+                    class="input input-bordered w-full max-w-xs">
+            </div>
+
+            <!-- Header Row -->
+            <div class="flex justify-around items-center bg-[#fffae5] p-4 rounded-lg shadow-sm mb-5">
+                <h2 class="text-xl font-bold text-[#f68b1f] p-3 border border-[#f68b1f] rounded-md">Course</h2>
+                <h2 class="text-xl font-bold text-[#f68b1f] p-3 border border-[#f68b1f] rounded-md">Credits</h2>
+                <h2 class="text-xl font-bold text-[#f68b1f] p-3 border border-[#f68b1f] rounded-md">Grade</h2>
+            </div>
+
+            <!-- Course Input Row -->
+            <div id="courses" class="bg-white shadow-md rounded-lg">
+                <div class="grid grid-cols-3 gap-5 p-2 px-5 relative">
+                    <!-- Course Number -->
+                    <h2
+                        class="text-lg flex items-center justify-center p-3 border border-[#f68b1f] rounded-md text-[#f68b1f] bg-[#fffae5] h-12 w-full">
+                        <span class="course-number">1</span>
+                    </h2>
+
+                    <div id="delete-item" class="hidden absolute -top-1 left-2 btn btn-ghost btn-circle btn-sm p-0">
+                        <i
+                            class="fa-solid fa-xmark bg-[#f68b1f] w-6 h-6 flex items-center justify-center text-white rounded-full"></i>
+                    </div>
+
+                    <!-- Select for Credits -->
+                    <select
+                        class="select select-bordered h-12 w-full text-[#f68b1f] border-[#f68b1f] focus:border-[#f68b1f] appearance-none hover:bg-[#fffae5]">
+                        <option disabled selected>Credits</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+
+                    <!-- Select for Grade -->
+                    <select
+                        class="select select-bordered h-12 w-full text-[#f68b1f] border-[#f68b1f] focus:border-[#f68b1f] appearance-none hover:bg-[#fffae5]">
+                        <option disabled selected>Grade</option>
+                        <option>A (4.00)</option>
+                        <option>A- (3.67)</option>
+                        <option>B+ (3.33)</option>
+                        <option>B (3.00)</option>
+                        <option>B- (2.67)</option>
+                        <option>C+ (2.33)</option>
+                        <option>C (2.00)</option>
+                        <option>C- (1.67)</option>
+                        <option>D+ (1.33)</option>
+                        <option>D (1.00)</option>
+                        <option>F (0.00)</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="m-5 flex justify-center items-center space-x-2">
+                <button id="btn-reset"
+                    class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
+                    Reset
+                </button>
+                <button id="btn-add-more"
+                    class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
+                    Add More
+                </button>
+                <button
+                    class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
+                    Add Retake
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Calculate Button at the Bottom -->
+    <section class="container md:px-24 mx-auto">
+        <div class="flex justify-center mb-3 px-2">
+            <button onclick="my_modal_1.showModal()"
+                class="btn bg-[#f68b1f] text-white font-bold rounded-lg w-full p-3 shadow-md hover:bg-[#ff9500] transition duration-200">
+                Calculate
+            </button>
+        </div>
+    </section>
+
+    <!-- modal-content -->
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold my-5">Your CGPA is</h3>
+            <p class="py-2">Total Credits: <span>0.00</span></p>
+            <p class="py-2">Credits: <span>0.00</span></p>
+            <p class="py-2">GPA: <span>0.00</span></p>
+            <p class="py-2">CGPA: <span>0.00</span></p>
+
+            <div class="modal-action flex justify-center"> <!-- Center the button -->
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+
+    <!-- javaScript -->
+    <script src="./index.js"></script>
+</body>
+
+</html>
