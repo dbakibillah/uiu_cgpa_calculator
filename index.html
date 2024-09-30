@@ -20,18 +20,30 @@
     <header class="container mx-auto md:px-24 p-2 bg-[#fffae5]">
         <nav class="flex items-center gap-2">
             <!-- Dropdown menu -->
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost btn-circle text-[#f68b1f]">
+            <div class="dropdown relative">
+                <div tabindex="0" role="button"
+                    class="btn btn-ghost btn-circle text-[#f68b1f] hover:bg-[#fffae5] transition duration-150 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h7" />
                     </svg>
                 </div>
-                <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-3 p-2 shadow">
-                    <li><a>Home</a></li>
-                    <li><a>History</a></li>
-                    <li><a>About</a></li>
+                <ul tabindex="0"
+                    class="menu dropdown-content bg-white border border-gray-300 rounded-lg shadow-lg z-10 mt-3 w-36">
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./index.html">Home</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./grading-policy.html">Grading
+                            Policy</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./history.html">History</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold">About</a>
+                    </li>
                 </ul>
             </div>
 
@@ -97,7 +109,6 @@
                 </div>
             </div>
 
-
             <div class="m-5 flex justify-center items-center space-x-2">
                 <button id="btn-reset"
                     class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
@@ -118,7 +129,7 @@
     <!-- Calculate Button at the Bottom -->
     <section class="container md:px-24 mx-auto">
         <div class="flex justify-center mb-3 px-2">
-            <button onclick="my_modal_1.showModal()"
+            <button id="btn-calculate"
                 class="btn bg-[#f68b1f] text-white font-bold rounded-lg w-full p-3 shadow-md hover:bg-[#ff9500] transition duration-200">
                 Calculate
             </button>
@@ -126,25 +137,23 @@
     </section>
 
     <!-- modal-content -->
-    <!-- Open the modal using ID.showModal() method -->
     <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
     <dialog id="my_modal_1" class="modal">
-        <div class="modal-box">
-            <h3 class="text-lg font-bold my-5">Your CGPA is</h3>
-            <p class="py-2">Total Credits: <span>0.00</span></p>
-            <p class="py-2">Credits: <span>0.00</span></p>
-            <p class="py-2">GPA: <span>0.00</span></p>
-            <p class="py-2">CGPA: <span>0.00</span></p>
+        <div class="modal-box rounded-lg shadow-lg bg-white p-6 flex flex-col items-start">
+            <h3 class="text-xl font-bold text-[#f68b1f] mb-4">Your CGPA is</h3>
+            <p class="py-2 text-gray-700">Total Credits: <span class="font-semibold">0.00</span></p>
+            <p class="py-2 text-gray-700">Credits: <span class="font-semibold">0.00</span></p>
+            <p class="py-2 text-gray-700">GPA: <span class="font-semibold">0.00</span></p>
+            <p class="py-2 text-gray-700">CGPA: <span class="font-semibold">0.00</span></p>
 
-            <div class="modal-action flex justify-center"> <!-- Center the button -->
-                <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    <button class="btn">Close</button>
+            <div class="modal-action flex justify-center mt-6 w-full">
+                <form method="dialog" class="w-full">
+                    <!-- Button to close the modal -->
+                    <button class="btn bg-[#f68b1f] text-white w-full">Close</button>
                 </form>
             </div>
         </div>
     </dialog>
-
 
     <!-- javaScript -->
     <script src="./index.js"></script>

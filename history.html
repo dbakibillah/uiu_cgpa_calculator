@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind and daisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/69c1ad270c.js" crossorigin="anonymous"></script>
+
+    <title>UIU CGPA Calculator</title>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Primary color: #f68b1f -->
+    <header class="container mx-auto md:px-24 p-2 bg-[#fffae5]">
+        <nav class="flex items-center gap-2">
+            <!-- Dropdown menu -->
+            <div class="dropdown relative">
+                <div tabindex="0" role="button"
+                    class="btn btn-ghost btn-circle text-[#f68b1f] hover:bg-[#fffae5] transition duration-150 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                </div>
+                <ul tabindex="0"
+                    class="menu dropdown-content bg-white border border-gray-300 rounded-lg shadow-lg z-10 mt-3 w-36">
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./index.html">Home</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./grading-policy.html">Grading
+                            Policy</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold" href="./history.html">History</a>
+                    </li>
+                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                        <a class="text-[#f68b1f] font-semibold">About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <h1 class="text-xl font-bold text-[#f68b1f]">History</h1>
+        </nav>
+    </header>
+
+    <main class="flex-grow mt-6 mb-10">
+        <section id="history-container" class="container md:px-24 p-2 mx-auto rounded-lg shadow-lg bg-white space-y-4">
+            <h2 class="text-xl font-bold text-[#f68b1f] p-3 m-2 bg-[#fffae5] border border-[#f68b1f] rounded-md">No
+                History
+                saved . . .</h2>
+
+            <!-- <div class="relative m-2 p-4 border border-[#f68b1f] rounded-lg bg-[#fffae5] shadow-md">
+                <div>
+                    <h2 class="text-lg font-bold text-[#f68b1f] mb-3">Course Information</h2>
+                    <div class="absolute -top-3 -right-3 btn btn-ghost btn-circle btn-sm p-0">
+                        <i
+                            class="fa-solid fa-xmark bg-[#f68b1f] w-7 h-7 flex items-center justify-center text-white text-lg rounded-full"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-x-6">
+                    <p class="text-gray-700">Credits: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+                    <p class="text-gray-700">Total Credits: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+                    <p class="text-gray-700">GPA: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+                    <p class="text-gray-700">CGPA: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+                </div>
+            </div> -->
+
+        </section>
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>
