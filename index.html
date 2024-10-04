@@ -38,9 +38,9 @@
                         <a class="text-[#f68b1f] font-semibold" href="./grading-policy.html">Grading
                             Policy</a>
                     </li>
-                    <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
+                    <!-- <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
                         <a class="text-[#f68b1f] font-semibold" href="./history.html">History</a>
-                    </li>
+                    </li> -->
                     <li class="hover:bg-[#fffae5] rounded-lg transition duration-150">
                         <a class="text-[#f68b1f] font-semibold">About</a>
                     </li>
@@ -53,7 +53,7 @@
 
     <main class="flex-grow mt-6 mb-10">
         <section class="container md:px-24 p-2 mx-auto rounded-lg shadow-lg bg-white">
-            <div class="flex gap-4 mb-5">
+            <div class="flex gap-4 mb-5 px-1">
                 <input id="input-credits" type="number" placeholder="Completed Credits"
                     class="input input-bordered w-full max-w-xs">
                 <input id="input-cgpa" type="number" placeholder="Current CGPA"
@@ -84,31 +84,37 @@
                     <!-- Select for Credits -->
                     <select
                         class="select select-bordered h-12 w-full text-[#f68b1f] border-[#f68b1f] focus:border-[#f68b1f] appearance-none hover:bg-[#fffae5]">
-                        <option disabled selected>Credits</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option disabled value="" selected>Select Credits</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
 
                     <!-- Select for Grade -->
                     <select
                         class="select select-bordered h-12 w-full text-[#f68b1f] border-[#f68b1f] focus:border-[#f68b1f] appearance-none hover:bg-[#fffae5]">
-                        <option disabled selected>Grade</option>
-                        <option>A (4.00)</option>
-                        <option>A- (3.67)</option>
-                        <option>B+ (3.33)</option>
-                        <option>B (3.00)</option>
-                        <option>B- (2.67)</option>
-                        <option>C+ (2.33)</option>
-                        <option>C (2.00)</option>
-                        <option>C- (1.67)</option>
-                        <option>D+ (1.33)</option>
-                        <option>D (1.00)</option>
-                        <option>F (0.00)</option>
+                        <option disabled value="" selected>Select Grade</option>
+                        <option value="4.00">A (4.00)</option>
+                        <option value="3.67">A- (3.67)</option>
+                        <option value="3.33">B+ (3.33)</option>
+                        <option value="3.00">B (3.00)</option>
+                        <option value="2.67">B- (2.67)</option>
+                        <option value="2.33">C+ (2.33)</option>
+                        <option value="2.00">C (2.00)</option>
+                        <option value="1.67">C- (1.67)</option>
+                        <option value="1.33">D+ (1.33)</option>
+                        <option value="1.00">D (1.00)</option>
+                        <option value="0.00">F (0.00)</option>
                     </select>
+
                 </div>
             </div>
 
+            <div id="retakes" class="bg-white shadow-md rounded-lg">
+
+            </div>
+
+            <!-- buttons -->
             <div class="m-5 flex justify-center items-center space-x-2">
                 <button id="btn-reset"
                     class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
@@ -118,7 +124,7 @@
                     class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
                     Add More
                 </button>
-                <button
+                <button id="btn-retake"
                     class="btn bg-[#f68b1f] text-white rounded-lg w-28 shadow-md hover:bg-[#ff9500] transition duration-200">
                     Add Retake
                 </button>
@@ -140,21 +146,24 @@
     <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
     <dialog id="my_modal_1" class="modal">
         <div class="modal-box rounded-lg shadow-lg bg-white p-6 flex flex-col items-start">
-            <h3 class="text-xl font-bold text-[#f68b1f] mb-4">Your CGPA is</h3>
-            <p class="py-2 text-gray-700">Total Credits: <span class="font-semibold">0.00</span></p>
-            <p class="py-2 text-gray-700">Credits: <span class="font-semibold">0.00</span></p>
-            <p class="py-2 text-gray-700">GPA: <span class="font-semibold">0.00</span></p>
-            <p class="py-2 text-gray-700">CGPA: <span class="font-semibold">0.00</span></p>
+            <h3 class="text-2xl font-bold text-[#f68b1f] mb-4 border-b border-[#f68b1f] pb-2">Your CGPA is</h3>
+            <p class="py-2 text-gray-800 text-lg">Total Credits: <span class="font-semibold text-[#f68b1f]">0.00</span>
+            </p>
+            <p class="py-2 text-gray-800 text-lg">Credits: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+            <p class="py-2 text-gray-800 text-lg">GPA: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
+            <p class="py-2 text-gray-800 text-lg">CGPA: <span class="font-semibold text-[#f68b1f]">0.00</span></p>
 
             <div class="modal-action flex justify-center mt-6 w-full">
                 <form method="dialog" class="w-full">
                     <!-- Button to close the modal -->
-                    <button class="btn bg-[#f68b1f] text-white w-full">Close</button>
+                    <button
+                        class="btn bg-[#f68b1f] text-white w-full py-2 rounded-lg hover:bg-[#d55b1f] transition duration-200">
+                        Close
+                    </button>
                 </form>
             </div>
         </div>
     </dialog>
-
     <!-- javaScript -->
     <script src="./index.js"></script>
 </body>
